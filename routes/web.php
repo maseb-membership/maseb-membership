@@ -20,11 +20,18 @@ use Illuminate\Support\Facades\Auth;
 
 //HOME
 Route::get('/', function() {
+    // dd(\Auth::user()->is_approved ." ". \Auth::user()->profile_photo_url);
+
     if (!\Auth::check()) {
+
         return view('welcome');
     }
 
-    return view('website.home');
+    if(\Auth::user()->is_approved){
+        return view('website.home');
+    }
+    return view('website.temporary-landing');
+
 })->name('home');
 // Route::get('/', function () {
 //     return view('welcome');
@@ -43,8 +50,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         //USER HOME
         Route::get('/', function () {
-            return view('website.home');
+            if(\Auth::user()->is_approved){
+                return view('website.home');
+            }
+            return view('website.temporary-landing');
         })->name('home');
+
 
         //NOTIFICATIONS
         Route::post('/get-user-notifications/{dropdown_state?}', [UsersController::class, 'renderedNotificationDropdownData'])->name('rendernotifications');

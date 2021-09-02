@@ -29,6 +29,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'last_name',
+        'grand_father_name',
+        'gender',
+        'member_id',
+        'mother_name',
+        'birthdate',
+        'is_approved',
     ];
 
     /**
@@ -59,12 +66,17 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        // 'is_approved',
     ];
 
     protected $dispatchesEvents = [
         'created' => \App\Events\UserCreatedEvent::class,
         'updated' => \App\Events\UserUpdatedEvent::class,
     ];
+
+    // public function getIsApprovedAttribute($value){
+    //     return User::where('id',$this->id)->value('is_approved');
+    // }
 
     public function isSuperAdmin(): bool
     {
@@ -78,17 +90,23 @@ class User extends Authenticatable
         return $this->hasRole('system-admin');
     }
 
-    public function isChannelAdmin(): bool
+    public function isFinanceAdmin(): bool
     {
         // return $this->roles()->get()->contains(self::ADMIN);
-        return $this->hasRole('channel-admin');
+        return $this->hasRole('finance-admin');
+    }
+    public function isMembershipAdmin(): bool
+    {
+        // return $this->roles()->get()->contains(self::ADMIN);
+        return $this->hasRole('membership-admin');
     }
 
-    public function isDefaultUser(): bool
+    public function isMemberUser(): bool
     {
         // return $this->roles()->get()->contains(self::DEFAULT_USER);
-        return $this->hasRole('user');
+        return $this->hasRole('member-user');
     }
+
 
     public function fullName(): string
     {

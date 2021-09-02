@@ -1,20 +1,13 @@
-Member::all();
-Member::membership_levels();
-Member::find(1)->membership_levels();
-Member::find(2)->membership_levels();
-Member::find(2)->membership_levels()->get();
-Member::find(2)->membership_types();
-Member::where('id',1)->membership_types();
-Member::where('id',1)->membership_types()->get();
-Member::all();
-Member::all()
-Member::all()
-Member::all();
-Member::all();
-Member::find(1)->membership_types();
-Member::find(1)->membership_types()->get();
-Member::find(2)->membership_types()->get();
-Member::find(5)->membership_types()->get();
-Member::find(5)->membership_levels()->get();
-Member::find(5)->membership_levels()->get();
-Member::find(5)->membership_levels()->get();
+User::all()
+User::all()
+User::all();
+User::all();
+User::all()
+$user = User::find(1);
+$user->is_approved = 1;
+$user->save();
+User::find(1)->get()
+$user = User::find(2)->get();
+User::find(2)->get();
+User::find(2)->get();
+User::find(2)->get();

@@ -15,17 +15,17 @@
                         $display_role = 'Super-Admin';
                     }
                     else{
-                        if(auth()->user()->hasRole('channel-admin')){
-                            $display_role .= 'Channel-Admin ';
+                        if(auth()->user()->hasRole('system-manager')){
+                            $display_role .= 'System-manager ';
                         }
                         if(auth()->user()->hasRole('system-admin')){
                             $display_role .= 'System-Admin ';
                         }
-                        if(auth()->user()->hasRole('system-admin')){
-                            $display_role .= 'System-Admin ';
+                        if(auth()->user()->hasRole('finance-admin')){
+                            $display_role .= 'Finance-Admin ';
                         }
-                        if(auth()->user()->hasRole('system-admin')){
-                            $display_role .= 'System-Admin ';
+                        if(auth()->user()->hasRole('membership-admin')){
+                            $display_role .= 'Membership-Admin ';
                         }
                     }
 
@@ -42,9 +42,11 @@
 
 
 
-                @if (auth()->user()->isSuperAdmin() || auth()->user()->isSystemAdmin() || auth()->user()->isChannelAdmin())
+                @if (
+                    auth()->user()->isSuperAdmin() ||
+                    auth()->user()->isSystemAdmin())
                 <li class="nav-header">MANAGEMENT</li>
-                @canany(['system_user'])
+                @canany(['manage-users'])
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon far fa-user"></i>
@@ -52,83 +54,57 @@
                     </a>
                 </li>
                 @endcanany
+                @endif
+                @if (
+                    auth()->user()->isSuperAdmin() ||
+                    auth()->user()->isMembershipAdmin() ||
+                    auth()->user()->isSystemAdmin())
+                <li class="nav-header">MEMBERS</li>
+                @canany(['system_user'])
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon far fa-user"></i>
+                        <p class="text">Add New</p>
+                    </a>
+                </li>
+                @endcanany
                 @canany(['system_gize_channels'])
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-solid fa-bullhorn"></i>
-                        <p class="text">All Gize Channels</p>
+                        <p class="text">List</p>
                     </a>
                 </li>
                 @endcanany
-                @canany([
-                    'manage_channel',
-                    'manage_batch',
-                    'manage_subscription',
-                    'manage_schedule',
-                ])
-                <li class="nav-header">CHANNELS</li>
-
-                <li class="nav-item ">
-                    <a href="#" class="nav-link
-                        ">
-                        <i class="nav-icon fa fa-solid fa-bullhorn"></i>
-                        <p>
-                            ADDMES CHANNEL
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                @canany(['membership-request', 'membership-approve'])
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon far fa-user"></i>
+                        <p class="text">Change Membership</p>
                     </a>
-                    <ul class="nav nav-treeview ">
-
-                        {{-- <li class="nav-item">
-                            <a href=""
-                                class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Edit Channel </p>
-                            </a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <a href="#"
-                                class="nav-link ">
-                                <i class="far fa fa-video nav-icon"></i>
-                                <p>Videos </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=""
-                                class="nav-link
-                                if(auth()->user()->hasRole('system-admin')){
-                                    $display_role .= 'System-Admin ';
-                                }">
-                                <i class="nav-icon fa fa-users"></i>
-                                <p>Batches </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#"
-                                class="nav-link }">
-                                <i class="nav-icon fa fa-users"></i>
-                                <p>Subscriptions </p>
-                            </a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a href=""
-                                class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Subscription Periods</p>
-                            </a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <a href=""
-                                class="nav-link ">
-                                <i class="far fa fa-calendar nav-icon"></i>
-                                <p>Schedule Calendar </p>
-                            </a>
-                        </li>
-
-                         </ul>
-
                 </li>
                 @endcanany
+
+                @canany(['membership-approve'])
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon far fa-user"></i>
+                        <p class="text">Approve Membership Changes</p>
+                    </a>
+                </li>
+                @endcanany
+
+
+                <li class="nav-header">MEMBERSHIP</li>
+                @canany(['manage-payment'])
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon far fa-user"></i>
+                        <p class="text">Periodic Payments</p>
+                    </a>
+                </li>
+                @endcanany
+
                 @endif
 
                 <li class="nav-header">MY ACCOUNT</li>

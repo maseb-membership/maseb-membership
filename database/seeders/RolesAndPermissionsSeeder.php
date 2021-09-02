@@ -66,6 +66,7 @@ class RolesAndPermissionsSeeder extends Seeder
             ->givePermissionTo([
                 'membership-approve',
                 'manage-users',
+                'membership-request',
                 'manage-payment',
             ]);
         $role = Role::create(['name' => 'membership-admin'])

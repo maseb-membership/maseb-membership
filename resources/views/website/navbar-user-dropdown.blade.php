@@ -10,22 +10,26 @@
         </a>
         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
             @if (auth()->user()->isSuperAdmin() ||
+                auth()->user()->isFinanceAdmin() ||
+                auth()->user()->isMembershipAdmin() ||
                 auth()->user()->isSystemAdmin())
                 <li><a href="{{ route('admin.home') }}" class="dropdown-item">System Administration</a></li>
 
-                <li><a href="{{ route('admin.home') }}" class="dropdown-item">Notifications</a></li>
-                <li class="dropdown-divider"></li>
+                {{-- <li><a href="{{ route('admin.home') }}" class="dropdown-item">Notifications</a></li>
+                <li class="dropdown-divider"></li> --}}
             @endif
-            @if (auth()->user()->isDefaultUser() ||
+            @if (auth()->user()->isMemberUser() ||
                 auth()->user()->isSuperAdmin() ||
+                auth()->user()->isFinanceAdmin() ||
+                auth()->user()->isMembershipAdmin() ||
                 auth()->user()->isSystemAdmin())
-                <li><a href="{{ route('web.home') }}" class="dropdown-item">My Account</a></li>
+                {{-- <li><a href="{{ route('web.home') }}" class="dropdown-item">My Account</a></li> --}}
             @endif
 
             @if (auth())
                 <li><a href="{{ route('profile.show') }}" class="dropdown-item">Edit Profile</a></li>
             @endif
-            <li>
+            {{-- <li>
                 <div class="dropdown-item">
                     <!-- Theme switch -->
                     <span>{{ __('Choose Theme Color') }}</span>
@@ -34,7 +38,7 @@
                         <label class="custom-control-label" for="themeSwitch">{{ __('Dark Mode') }}</label>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
 
             <li class="dropdown-divider"></li>
