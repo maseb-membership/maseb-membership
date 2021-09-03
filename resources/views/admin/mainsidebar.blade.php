@@ -18,9 +18,6 @@
                         if(auth()->user()->hasRole('system-manager')){
                             $display_role .= 'System-manager ';
                         }
-                        if(auth()->user()->hasRole('system-admin')){
-                            $display_role .= 'System-Admin ';
-                        }
                         if(auth()->user()->hasRole('finance-admin')){
                             $display_role .= 'Finance-Admin ';
                         }
@@ -44,66 +41,61 @@
 
                 @if (
                     auth()->user()->isSuperAdmin() ||
-                    auth()->user()->isSystemAdmin())
-                <li class="nav-header">MANAGEMENT</li>
-                @canany(['manage-users'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon far fa-user"></i>
-                        <p class="text">User Accounts</p>
-                    </a>
-                </li>
-                @endcanany
+                    auth()->user()->isSystemManager())
+                    <li class="nav-header">MANAGEMENT</li>
+                    @canany(['manage-users', 'system-user'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.manage.user.index') }}" class="nav-link {{ request()->is('admin/manage/users*') ? 'active' : '' }}">
+                            <i class="nav-icon far fa-user"></i>
+                            <p class="text">User Accounts</p>
+                        </a>
+                    </li>
+                    @endcanany
                 @endif
                 @if (
                     auth()->user()->isSuperAdmin() ||
                     auth()->user()->isMembershipAdmin() ||
-                    auth()->user()->isSystemAdmin())
-                <li class="nav-header">MEMBERS</li>
-                @canany(['system_user'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon far fa-user"></i>
-                        <p class="text">Add New</p>
-                    </a>
-                </li>
-                @endcanany
-                @canany(['system_gize_channels'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon fa fa-solid fa-bullhorn"></i>
-                        <p class="text">List</p>
-                    </a>
-                </li>
-                @endcanany
-                @canany(['membership-request', 'membership-approve'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon far fa-user"></i>
-                        <p class="text">Change Membership</p>
-                    </a>
-                </li>
-                @endcanany
+                    auth()->user()->isSystemManager())
 
-                @canany(['membership-approve'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon far fa-user"></i>
-                        <p class="text">Approve Membership Changes</p>
-                    </a>
-                </li>
-                @endcanany
+                    <li class="nav-header">MEMBERS</li>
+                    {{-- @canany(['system_user']) --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon far fa-address-card"></i>
+                            <p class="text">Add New</p>
+                        </a>
+                    </li>
+                    {{-- @endcanany --}}
+                    {{-- @canany(['system_gize_channels']) --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon fa fa-solid fa-list"></i>
+                            <p class="text">List</p>
+                        </a>
+                    </li>
+                    {{-- @endcanany --}}
+                    @canany(['membership-request', 'membership-approve'])
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon fa fa-award"></i>
+                            <p class="text">Manage Memberships</p>
+                        </a>
+                    </li>
+                    @endcanany
+                @endif
 
-
-                <li class="nav-header">MEMBERSHIP</li>
-                @canany(['manage-payment'])
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon far fa-user"></i>
-                        <p class="text">Periodic Payments</p>
-                    </a>
-                </li>
-                @endcanany
+                @if(auth()->user()->isSuperAdmin() ||
+                    auth()->user()->isSystemManager() ||
+                    auth()->user()->isFinanceAdmin())
+                    <li class="nav-header">FINANCE</li>
+                    @canany(['manage-payment'])
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon far fa-user"></i>
+                            <p class="text"> Periodic Payments</p>
+                        </a>
+                    </li>
+                    @endcanany
 
                 @endif
 

@@ -12,7 +12,7 @@
             @if (auth()->user()->isSuperAdmin() ||
                 auth()->user()->isFinanceAdmin() ||
                 auth()->user()->isMembershipAdmin() ||
-                auth()->user()->isSystemAdmin())
+                auth()->user()->isSystemManager())
                 <li><a href="{{ route('admin.home') }}" class="dropdown-item">System Administration</a></li>
 
                 {{-- <li><a href="{{ route('admin.home') }}" class="dropdown-item">Notifications</a></li>
@@ -22,7 +22,7 @@
                 auth()->user()->isSuperAdmin() ||
                 auth()->user()->isFinanceAdmin() ||
                 auth()->user()->isMembershipAdmin() ||
-                auth()->user()->isSystemAdmin())
+                auth()->user()->isSystemManager())
                 {{-- <li><a href="{{ route('web.home') }}" class="dropdown-item">My Account</a></li> --}}
             @endif
 

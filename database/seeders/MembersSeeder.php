@@ -31,6 +31,10 @@ class MembersSeeder extends Seeder
                 "approved_by" => $faker->randomElement($users->pluck('id')),
 
             ]);
+$update_user = User::find($user->id);
+$update_user->member_id = $member->id;
+$update_user->save();
+
 
         }
 

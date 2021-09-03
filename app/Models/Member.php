@@ -23,14 +23,6 @@ class Member extends Model
     ];
 
 
-    // protected $appends = [
-    //     'membership_status',
-
-    // ];
-
-    // public function getMembershipStatusAttribute($value){
-    //     return $this->membership_types()->pivot->created_at;
-    // }
 
 
 

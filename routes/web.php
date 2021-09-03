@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Website\HomePageController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,23 +14,28 @@ use Illuminate\Support\Facades\Auth;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 //HOME
-Route::get('/', function() {
+Route::get('/', function () {
     // dd(\Auth::user()->is_approved ." ". \Auth::user()->profile_photo_url);
-
+    $user = \Auth::user();
     if (!\Auth::check()) {
 
         return view('welcome');
     }
 
-    if(\Auth::user()->is_approved){
-        return view('website.home');
+    if ($user->hasRole('member-user')) {
+        if (\Auth::user()->is_approved) {
+            return view('website.home');
+        }
+        return view('website.temporary-landing');
     }
-    return view('website.temporary-landing');
+    return view('website.home');
+
 
 })->name('home');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -41,35 +44,35 @@ Route::get('/', function() {
 //     return view('dashboard');
 // })->name('dashboard');
 
-
 //ROUTE GROUP::AUTH
 Route::group(['middleware' => 'auth'], function () {
 
     //ROUTE GROUP::WEBSITE
-    Route::group(['prefix' => 'web',  'as' => 'web.'], function () {
+    Route::group(['prefix' => 'web', 'as' => 'web.'], function () {
 
         //USER HOME
         Route::get('/', function () {
-            if(\Auth::user()->is_approved){
-                return view('website.home');
+            if ($user->hasRole('member-user')) {
+                if (\Auth::user()->is_approved) {
+                    return view('website.home');
+                }
+                return view('website.temporary-landing');
             }
-            return view('website.temporary-landing');
+            return view('website.home');
         })->name('home');
-
 
         //NOTIFICATIONS
         Route::post('/get-user-notifications/{dropdown_state?}', [UsersController::class, 'renderedNotificationDropdownData'])->name('rendernotifications');
         Route::post('/mark-user-notifications/{notification_id}/{dropdown_state?}', [UsersController::class, 'markNotificationAsRead'])->name('marknotification');
         Route::post('/markall-user-notifications/{dropdown_state?}', [UsersController::class, 'markAllNotificationAsRead'])->name('markallnotification');
 
-
     });
 
     //ROUTE GROUP::ADMIN
-    Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         //ADMIN HOME
-        Route::get('/', function(){
+        Route::get('/', function () {
             return view('admin.home');
         })->name('home');
 
@@ -78,6 +81,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/mark-user-notifications/{notification_id}/{dropdown_state?}', [UsersController::class, 'markNotificationAsRead'])->name('marknotification');
         Route::post('/markall-user-notifications/{dropdown_state?}', [UsersController::class, 'markAllNotificationAsRead'])->name('markallnotification');
 
+        //ROUTE GROUP::ADMIN/MANAGE
+        Route::group(['prefix' => 'manage', 'as' => 'manage.'], function () {
+
+            //SYSTEM_USERS
+            Route::resource('users', \App\Http\Controllers\Admin\UsersController::class)->names([
+                'index' => 'user.index',
+                'store' => 'user.store',
+                'create' => 'user.create',
+                'edit' => 'user.edit',
+                'update' => 'user.update',
+                'destroy' => 'user.destroy',
+                'show' => 'user.show',
+            ]);
+        });
     });
 
     //USER PROFILE
@@ -93,7 +110,4 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect('/');
     })->name('logout');
 
-
 });
-
-

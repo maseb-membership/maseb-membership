@@ -16,7 +16,6 @@ class UsersTableSeeder extends Seeder
                 'last_name'     => 'user',
                 'email'          => 'member@user.com',
                 'password'       => bcrypt('12345678'),
-                'name'       => '',
                 'remember_token' => null,
             ],
             [
@@ -25,7 +24,6 @@ class UsersTableSeeder extends Seeder
                 'last_name'     => 'admin',
                 'email'          => 'system@admin.com',
                 'password'       => bcrypt('12345678'),
-                'name'       => '',
                 'remember_token' => null,
             ],
             [
@@ -34,7 +32,6 @@ class UsersTableSeeder extends Seeder
                 'last_name'     => 'admin',
                 'email'          => 'super@admin.com',
                 'password'       => bcrypt('12345678'),
-                'name'       => '',
                 'remember_token' => null,
             ],
             [
@@ -43,7 +40,6 @@ class UsersTableSeeder extends Seeder
                 'last_name'     => 'admin',
                 'email'          => 'finance@admin.com',
                 'password'       => bcrypt('12345678'),
-                'name'       => '',
                 'remember_token' => null,
             ],
             [
@@ -52,7 +48,6 @@ class UsersTableSeeder extends Seeder
                 'last_name'     => 'admin',
                 'email'          => 'membership@admin.com',
                 'password'       => bcrypt('12345678'),
-                'name'       => '',
                 'remember_token' => null,
             ],
         ];

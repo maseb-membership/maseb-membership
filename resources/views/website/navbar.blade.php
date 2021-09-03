@@ -1,7 +1,7 @@
 <nav class="main-header border-bottom-0 navbar navbar-expand-md navbar-dark navbar-gray-dark">
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand">
-            <img src="{{ asset('assets/image/logos/Gize logo banner dark.png') }}" alt="Gize"
+            <img src="{{ asset('assets/image/logos/logo banner dark.png') }}" alt="Gize"
                 class=" brand-image pr-2" height="36px" style="opacity: 1">
             {{-- <span class="brand-text font-weight-light">Gize</span> --}}
         </a>

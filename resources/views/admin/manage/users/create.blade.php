@@ -55,12 +55,12 @@
                         @csrf
                         <div class="px-4 py-2 sm:p-6">
 
-                            <label for="firstname" class="">First Name</label>
+                            <label for="name" class="">First Name</label>
 
-                            <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name"
-                                value="{{ old('firstname', '') }}" />
+                            <input class="form-control" type="text" id="name" name="name" placeholder="First Name"
+                                value="{{ old('name', '') }}" />
 
-                            @error('firstname')
+                            @error('name')
                                 <p class="text-sm text-red">{{ $message }}</p>
                             @enderror
                         </div>
@@ -68,12 +68,12 @@
 
                         <div class="px-4 py-2 sm:p-6">
 
-                            <label for="lastname" class="">Last Name</label>
+                            <label for="last_name" class="">Last Name</label>
 
-                            <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name"
-                                value="{{ old('lastname', '') }}" />
+                            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last Name"
+                                value="{{ old('last_name', '') }}" />
 
-                            @error('lastname')
+                            @error('last_name')
                                 <p class="text-sm text-red">{{ $message }}</p>
                             @enderror
                         </div>

@@ -66,6 +66,9 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        // 'membership_type',
+        // 'membership_level',
+
         // 'is_approved',
     ];
 
@@ -77,6 +80,24 @@ class User extends Authenticatable
     // public function getIsApprovedAttribute($value){
     //     return User::where('id',$this->id)->value('is_approved');
     // }
+     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+
+    // public function getMembershipTypeAttribute($value){
+    //     $t = Member::find($this->member_id)->membership_types()->get();
+    //     $name = end(end($t))['name'];
+    //     return $name;
+    // }
+
+    // public function getMembershipLevelAttribute($value){
+    //     $t = Member::find($this->member_id)->membership_levels()->get();
+    //     $name = end(end($t))['name'];
+    //     return $name;
+    // }
+
 
     public function isSuperAdmin(): bool
     {
@@ -84,10 +105,10 @@ class User extends Authenticatable
         return $this->hasRole('super-admin');
     }
 
-    public function isSystemAdmin(): bool
+    public function isSystemManager(): bool
     {
         // return $this->roles()->get()->contains(self::ADMIN);
-        return $this->hasRole('system-admin');
+        return $this->hasRole('system-manager');
     }
 
     public function isFinanceAdmin(): bool
@@ -110,8 +131,8 @@ class User extends Authenticatable
 
     public function fullName(): string
     {
-        return $this->name;
-        // return $this->firstname . ' ' . $this->lastname;
+        // return $this->name;
+        return $this->name . ' ' . $this->last_name. ' ' . $this->grand_father_name;
     }
 
 

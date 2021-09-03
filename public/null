@@ -1,13 +1,53 @@
+Member::find(5)->membership_types()
+Member::find(5)->membership_types()->last()
+Member::find(5)->membership_types
+Member::find(5)->membership_type
+Member::find(5)->membership_types
+Member::find(5)->membership_types->name
+Member::find(5)->membership_types->name->last()
+Member::find(5)->membership_types()->last()->name->get()
+Member::find(5)->membership_types()->last()->name
+Member::find(5)->membership_types()->last
+Member::find(5)->membership_types
+Member::find(5)->membership_types
+$t = Member::find(5)->membership_types;
+end($t).name
+$t = Member::find(5)->membership_types;
+end($t)['name']
+$t = Member::find(5)->membership_types;
+end($t)
+$t = Member::find(5)->membership_types;
+end(end($t))
+$t = Member::find(5)->membership_types;
+end(end($t))['name']
+$t = Member::find(5)->membership_levels;
+end(end($t))['name']
+Member::find(5)
+Member::find(5)->get()
+Member::where('id', 5)->get()
+Member::where('id', 5)
+Member::where('id', 5)->get()
+Member::all()
+Member::all()
+Member::all()
+Member::all()
+Member::all()
 User::all()
 User::all()
-User::all();
-User::all();
 User::all()
-$user = User::find(1);
-$user->is_approved = 1;
-$user->save();
-User::find(1)->get()
-$user = User::find(2)->get();
-User::find(2)->get();
-User::find(2)->get();
-User::find(2)->get();
+User::all()
+User::all()
+User::all()
+User::all()
+User::where('member_id',1)
+User::where('member_id',1)->get()
+User::where('member_id',1)->get();
+User::all()
+User::all()
+User::where('member_id', 1)
+User::where('member_id', 1)->get()
+User::all()
+Member::all()
+Member::membership_types()
+Member::membership_types
+Member::all()

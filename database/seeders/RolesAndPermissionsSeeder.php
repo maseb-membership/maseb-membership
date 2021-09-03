@@ -33,25 +33,25 @@ class RolesAndPermissionsSeeder extends Seeder
         //     - view_payment_history
 
         $permissions = [
-            'system_user',
+            //Super Admin
+            'system-user',
 
+            //System Manager
             'membership-approve',
             'manage-users',
+
+            //System Manager + Finance Admin
             'manage-payment',
 
+            //Membership Admin
             'membership-request',
 
+            //Member User
             'view-profile',
             'view-payment-history',
+            'update-profile',
 
-            // 'manage_shop_subscription',
-            // 'manage_agent_subscription',
-
-            // 'shop_data',
-            // 'shop_agent_assignment',
-            // 'author_data',
-            // 'author_asign_shop',
-            // 'author_activate_account',
+            'member-activate-account',
         ];
 
         foreach ($permissions as $permission) {
@@ -80,6 +80,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['name' => 'member-user'])
             ->givePermissionTo([
                 'view-profile',
+                'update-profile',
                 'view-payment-history',
             ]);
 

@@ -2,7 +2,7 @@
 
 @section('header-menu')
     <div class="inner">
-        <img src="{{ asset('assets/image/logos/Gize logo banner dark.png') }}" alt="Gize"
+        <img src="{{ asset('assets/image/logos/logo banner dark.png') }}" alt="Gize"
             class="masthead-brand brand-image pr-2" height="54px" style="opacity: 1">
         {{-- <h3 class="masthead-brand">{{ config('app.name', 'Gize')  }}</h3> --}}
         <nav class="nav nav-masthead justify-content-center">

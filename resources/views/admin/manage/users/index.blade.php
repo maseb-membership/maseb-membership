@@ -2,8 +2,6 @@
 
 @section('page_title', 'Users')
 
-@section('page_title', 'Users')
-
 @section('header_title')
 	Users Management Page
 @stop
@@ -58,6 +56,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" width="50">ID</th>
+                                <th scope="col" width="50">Photo</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Email Verified At</th>
@@ -69,6 +68,8 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
+
+                                    <td><img src="{{ $user->profile_photo_url }}" width="40"/></td>
 
                                     <td>{{ $user->fullName() }}</td>
 

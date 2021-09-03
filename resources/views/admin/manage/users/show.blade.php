@@ -50,6 +50,14 @@
                     <table class="table table-borderless">
                         <tr>
                             <th scope="col">
+                                Photo
+                            </th>
+                            <td>
+                                <img src="{{ $user->profile_photo_url }}" width="40"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">
                                 ID
                             </th>
                             <td>

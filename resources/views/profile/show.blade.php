@@ -11,33 +11,53 @@
 @endsection
 
 @section('content')
+<div class="container mb-4">
+    <div class="row mt-4">
+        <div class="col">
+            <h2 class="mb-4">{{ __('Edit Profile')}}</h2>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="justify-content-center ">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+                                @can('update-profile')
+                                    @livewire('profile.update-profile-information-form')
+                                @elsecannot('update-profile')
+                                    <div class="alert alert-warning" role="alert">
+                                        Sorry, You are not permitted to Edit your profile.
+                                    </div>
+                                @endcan
+                                <x-jet-section-border />
+                            @endif
 
-    <div>
-        @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-            @livewire('profile.update-profile-information-form')
+                            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+                                @livewire('profile.update-password-form')
 
-            <x-jet-section-border />
-        @endif
+                                <x-jet-section-border />
+                            @endif
 
-        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-            @livewire('profile.update-password-form')
+                            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+                                @livewire('profile.two-factor-authentication-form')
 
-            <x-jet-section-border />
-        @endif
+                                <x-jet-section-border />
+                            @endif
 
-        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-            @livewire('profile.two-factor-authentication-form')
+                            @livewire('profile.logout-other-browser-sessions-form')
 
-            <x-jet-section-border />
-        @endif
+                            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+                                <x-jet-section-border />
 
-        @livewire('profile.logout-other-browser-sessions-form')
-
-        @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-            <x-jet-section-border />
-
-            @livewire('profile.delete-user-form')
-        @endif
+                                @livewire('profile.delete-user-form')
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
 @endsection
