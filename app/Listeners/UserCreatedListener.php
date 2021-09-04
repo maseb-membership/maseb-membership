@@ -31,7 +31,8 @@ class UserCreatedListener
     {
 
         //Assign Default Roles...
-        $event->user->assignRole('user');
+$event->user->assignRole('member-user');
+
 
         //assign Default permissions...
         //...
@@ -41,7 +42,8 @@ class UserCreatedListener
 
 
         //Send a 'new_user' notification to all Admins...
-$all_admins = User::role(['super-admin', 'system-admin'])->get();
+$all_admins = User::role(['super-admin', 'system-manager'])->get();
+
 
 Notification::send($all_admins, new UserCreatedNotification($event->user));
 
