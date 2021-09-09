@@ -24,13 +24,10 @@
                         <div class="row">
                             <div class="col-12">
                                 @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                                    @can('update-profile')
                                         @livewire('profile.update-profile-information-form')
-                                    @elsecannot('update-profile')
                                         <div class="alert alert-warning" role="alert">
                                             Sorry, You are not permitted to Edit your profile.
                                         </div>
-                                    @endcan
                                     <x-jet-section-border />
                                 @endif
 

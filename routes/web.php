@@ -48,7 +48,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
 
     //ROUTE GROUP::WEBSITE
-    Route::group(['prefix' => 'web', 'as' => 'web.'], function () {
+    Route::group(['prefix' => 'web', 'middleware' => 'role:super-admin|member-user','as' => 'web.'], function () {
 
         //USER HOME
         Route::get('/', function () {
@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     //ROUTE GROUP::ADMIN
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => 'role:system-manager|membership-admin|finance-admin|super-admin', 'as' => 'admin.'], function () {
 
         //ADMIN HOME
         Route::get('/', function () {

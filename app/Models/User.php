@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Hash;
 use Jenssegers\Date\Date;
 
 
@@ -32,12 +33,13 @@ class User extends Authenticatable
         'email',
         'password',
         'last_name',
-        'grand_father_name',
-        'gender',
-        'member_id',
-        'mother_name',
-        'birthdate',
-        'is_approved',
+// 'grand_father_name',
+// 'gender',
+// 'member_id',
+// 'mother_name',
+// 'birthdate',
+// 'is_approved',
+
     ];
 
     /**
@@ -135,6 +137,21 @@ class User extends Authenticatable
     {
         // return $this->name;
         return $this->name . ' ' . $this->last_name. ' ' . $this->grand_father_name;
+    }
+    // /**
+    //  * Add a mutator to ensure hashed passwords
+    //  */
+    //  public function setPasswordAttribute($password)
+    //  {
+    //      $this->attributes['password'] = bcrypt($password);
+    //  }
+
+    public function setPasswordAttribute($value)
+    {
+        // if(isset($this->attributes['password']) && $this->attributes['password'] != ''){
+            return $this->attributes['password'] = Hash::needsRehash($value) ? Hash::make($value) : $value;
+        // }
+        // return $value;
     }
 
 

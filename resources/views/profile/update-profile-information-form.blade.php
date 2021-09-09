@@ -44,7 +44,7 @@
                 <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
 				</x-jet-secondary-button>
-				
+
 				@if ($this->user->profile_photo_path)
                     <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                         {{ __('Remove Photo') }}
@@ -61,6 +61,13 @@
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}" wire:model.defer="state.name" autocomplete="name" />
                 <x-jet-input-error for="name" />
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group">
+                <x-jet-label for="last_name" value="{{ __('Last Name') }}" />
+                <x-jet-input id="last_name" type="text" class="{{ $errors->has('last_name') ? 'is-invalid' : '' }}" wire:model.defer="state.last_name" autocomplete="last_name" />
+                <x-jet-input-error for="last_name" />
             </div>
 
             <!-- Email -->

@@ -140,7 +140,7 @@
                                 Cancel
                             </a>
                             <button class="btn btn-primary ">
-                                Edit
+                                Update
                             </button>
                         </div>
                     </form>

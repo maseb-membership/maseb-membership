@@ -45,6 +45,6 @@ class StoreUserRequest extends FormRequest
 
     public function authorize()
     {
-        return Gate::allows('system_user');
+        return Gate::allows('manage_users');
     }
 }

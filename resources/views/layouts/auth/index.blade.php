@@ -255,7 +255,7 @@
 <body class="text-center">
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
+        <header class="masthead">
             @yield('header-menu')
         </header>
 

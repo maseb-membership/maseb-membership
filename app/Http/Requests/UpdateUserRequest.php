@@ -10,7 +10,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstname' => [
+            'name' => [
                 'string',
                 'required',
             ],
@@ -40,6 +40,6 @@ class UpdateUserRequest extends FormRequest
 
     public function authorize()
     {
-        return Gate::allows('system_user');
+        return Gate::allows('manage_users');
     }
 }

@@ -17,7 +17,8 @@ class UsersController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('system-user'), Response::HTTP_FORBIDDEN, 'Forbidden');
+abort_if(Gate::denies('manage-users'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
 
         $users = User::with('roles')->get();
 
@@ -26,7 +27,8 @@ class UsersController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('system-user'), Response::HTTP_FORBIDDEN, 'Forbidden');
+abort_if(Gate::denies('manage-users'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
 
         $roles = Role::get();
 
@@ -52,7 +54,8 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        abort_if(Gate::denies('system-user'), Response::HTTP_FORBIDDEN, 'Forbidden');
+abort_if(Gate::denies('manage-users'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
 
         return view('admin.manage.users.show', compact('user'));
     }
@@ -60,7 +63,8 @@ class UsersController extends Controller
     public function edit(User $user)
     {
 
-        abort_if(Gate::denies('system-user'), Response::HTTP_FORBIDDEN, 'Forbidden');
+abort_if(Gate::denies('manage-users'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
 
         $roles = Role::get();
 
@@ -84,7 +88,8 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
-        abort_if(Gate::denies('system-user'), Response::HTTP_FORBIDDEN, 'Forbidden');
+abort_if(Gate::denies('manage-users'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
 
         $user->delete();
 

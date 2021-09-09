@@ -100,7 +100,7 @@
         <div class="grid-container">
             <div class="justify-content-center ">
 
-                @can('view-profile1')
+                @hasanyrole('member-user' )
                     <section class="content">
                         <div class="container-fluid">
                             <div class="row">
@@ -163,7 +163,7 @@
 
                                             <ul class="list-group list-group-unbordered mb-3">
                                                 <li class="list-group-item">
-                                                    <b>Member Since</b> <a class="float-right">Jul, 12 2021</a>
+                                                    <b>Member Since</b> <a class="float-right">Jul 12, 2021</a>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <b>Department</b> <a class="float-right">
@@ -554,11 +554,11 @@
                             <!-- /.row -->
                         </div><!-- /.container-fluid -->
                     </section>
-                @elsecannot('view-profile1')
+                @else
                 <div class="alert alert-warning" role="alert">
                     Sorry, You are not permitted to view your membership profile.
                   </div>
-                @endcan
+                @endhasrole
             </div>
         </div>
     </div>
