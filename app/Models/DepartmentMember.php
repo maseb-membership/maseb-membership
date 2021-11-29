@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class MemberMembershipType extends Pivot
+use Illuminate\Database\Eloquent\Relations\Pivot;
+class DepartmentMember extends Pivot
 {
     use HasFactory;
 
@@ -23,14 +23,13 @@ class MemberMembershipType extends Pivot
      * @var array
      */
     protected $fillable = [
-        'membership_type_id',
         'member_id',
+        'department_id',
         'published_at',
         'published_by',
         'approved_at',
         'approved_by',
     ];
-
 
 
 

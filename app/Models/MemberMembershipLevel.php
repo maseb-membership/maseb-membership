@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class MemberMembershipLevel extends Pivot
 {
@@ -22,30 +23,14 @@ class MemberMembershipLevel extends Pivot
      * @var array
      */
     protected $fillable = [
-        'created_at',
-        'created_by',
+        'member_id',
+        'membership_level_id',
+        'published_at',
+        'published_by',
         'approved_at',
         'approved_by',
-        'membership_level_id',
-        'member_id',
     ];
 
-    /**
-     * The members that belong to the MemberMembershipLevel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function members()
-    {
-        return $this->belongsToMany(Memeber::class, 'member_membership_level', 'membership_level_id', 'member_id')
-            ->withPivot([
 
-                'created_at',
-                'created_by',
-                'approved_at',
-                'approved_by',
-            ]);
-            // ->withTimestamps();
-    }
 
 }

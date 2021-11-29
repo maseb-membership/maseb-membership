@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form id="paymentAddForm" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" id="pmt_show_batch_user_id" name="pmt_show_batch_user_id" value="" />
+                    <input type="hidden" id="pmt_show_member_id" name="pmt_show_member_id" value="" />
                     <div class="form-group row my-0">
                         <label for="pmt_show_period_no" class="text-sm-left text-md-right col-sm-8 col-form-label">Subscription Period</label>
                         <div class="col-sm-4">

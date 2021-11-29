@@ -57,20 +57,20 @@
                     auth()->user()->isMembershipAdmin() ||
                     auth()->user()->isSystemManager())
 
-                    <li class="nav-header">MEMBERS</li>
+                    <li class="nav-header">MEMBERSHIP</li>
                     {{-- @canany(['system_user']) --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
-                            <i class="nav-icon far fa-address-card"></i>
-                            <p class="text">Add New</p>
+                            <i class="nav-icon fa fa-list"></i>
+                            <p class="text">Members</p>
                         </a>
                     </li>
                     {{-- @endcanany --}}
                     {{-- @canany(['system_gize_channels']) --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="nav-icon fa fa-solid fa-list"></i>
-                            <p class="text">List</p>
+                        <a href="{{ route('admin.manage.profiles') }}" class="nav-link ">
+                            <i class="nav-icon fa fa-solid fa-address-card"></i>
+                            <p class="text">Profiles</p>
                         </a>
                     </li>
                     {{-- @endcanany --}}
@@ -78,7 +78,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="nav-icon fa fa-award"></i>
-                            <p class="text">Manage Memberships</p>
+                            <p class="text">Update Memberships</p>
                         </a>
                     </li>
                     @endcanany
@@ -90,7 +90,7 @@
                     <li class="nav-header">FINANCE</li>
                     @canany(['manage-payment'])
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{ route('admin.manage.finance.index') }}" class="nav-link ">
                             <i class="nav-icon far fa-user"></i>
                             <p class="text"> Periodic Payments</p>
                         </a>

@@ -22,15 +22,25 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'father_name' => ['required', 'string', 'max:255'],
+            'grand_father_name' => ['required', 'string', 'max:255'],
+            'gender' => ['required'],
+            'birth_date' => ['required','string'],
+            'nationality' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        $bd = \Carbon\Carbon::createFromFormat('m/d/Y', $input['birth_date'])->toDateString();
+
         return User::create([
             'name' => $input['name'],
-            'last_name' => $input['last_name'],
+            'father_name' => $input['father_name'],
+            'grand_father_name' => $input['grand_father_name'],
+            'gender' => $input['gender'],
+            'birth_date' => $bd,
+            'nationality' => $input['nationality'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);

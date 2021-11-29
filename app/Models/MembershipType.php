@@ -17,4 +17,21 @@ class MembershipType extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * The members that belong to the MemberMembershipType
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function members()
+    {
+        return $this->belongsToMany(Memeber::class, 'member_membership_type', 'membership_type_id', 'member_id')
+            ->withPivot([
+                'published_at',
+                'published_by',
+                'approved_at',
+                'approved_by',
+            ])
+            ->withTimestamps();
+    }
 }

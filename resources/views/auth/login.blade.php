@@ -5,7 +5,7 @@
         <img src="{{ asset('assets/image/logos/logo banner dark.png') }}" alt="Gize"
             class="masthead-brand brand-image pr-2" height="54px" style="opacity: 1">
         {{-- <h3 class="masthead-brand">{{ config('app.name', 'Gize')  }}</h3> --}}
-        <nav class="nav nav-masthead justify-content-center">
+        {{-- <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="{{ url('/') }}">Home</a>
             @if (Route::has('login'))
 
@@ -22,7 +22,7 @@
                 @endauth
 
             @endif
-        </nav>
+        </nav> --}}
     </div>
 
     @endsection
@@ -69,6 +69,9 @@
                                         {{ __('Forgot your password?') }}
                                     </a>
                                 @endif
+                                <a class="text-muted mr-3" href="{{ route('register') }}">
+                                    {{ __('Register') }}
+                                </a>
                                 <div class="button">
                                     <x-jet-button>
                                         {{ __('Log in') }}

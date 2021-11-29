@@ -235,7 +235,7 @@
                                                 <li class="nav-item"><a class="nav-link active" href="#home"
                                                         data-toggle="tab">Home</a></li>
                                                 <li class="nav-item"><a class="nav-link " href="#payment"
-                                                    data-toggle="tab">Payment History</a></li>
+                                                    data-toggle="tab">Payments</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="#compliant"
                                                         data-toggle="tab">Compliant</a></li>
                                             </ul>
@@ -380,7 +380,56 @@
                                                 </div>
 
                                                 <div class="tab-pane" id="payment">
-                                                    Payment History...
+                                                    <span class="text-muted">You can manage your membership payments from this tab.</span>
+                                                    <hr/>
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-overview" role="tab" aria-controls="v-pills-overview" aria-selected="true">Overview</a>
+                                                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">History</a>
+                                                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-unpaid" role="tab" aria-controls="v-pills-unpaid" aria-selected="false">Unpaid</a>
+                                                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-my-bank-payments" role="tab" aria-controls="v-pills-my-bank-payments" aria-selected="false">My Bank Payments</a>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-9">
+                                                          <div class="tab-content" id="v-pills-tabContent">
+                                                            <div class="tab-pane fade show active" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">Overview</div>
+                                                            <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
+                                                                <table class="table table-sm">
+                                                                    <thead>
+                                                                      <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Date</th>
+                                                                        <th scope="col">month</th>
+                                                                        <th scope="col">Handle</th>
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <th scope="row">1</th>
+                                                                        <td>Jan 1, 2021</td>
+                                                                        <td>Otto</td>
+                                                                        <td>@mdo</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <th scope="row">2</th>
+                                                                        <td>Jacob</td>
+                                                                        <td>Thornton</td>
+                                                                        <td>@fat</td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <th scope="row">3</th>
+                                                                        <td colspan="2">Larry the Bird</td>
+                                                                        <td>@twitter</td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="v-pills-unpaid" role="tabpanel" aria-labelledby="v-pills-unpaid-tab">Unpaid</div>
+                                                            <div class="tab-pane fade" id="v-pills-my-bank-payments" role="tabpanel" aria-labelledby="v-pills-my-bank-payments-tab">My Bank Payments</div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
                                                 </div>
 
                                                 <!-- /.tab-pane -->

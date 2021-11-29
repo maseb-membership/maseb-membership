@@ -10,8 +10,8 @@
             <div class="modal-body">
                 <form id="paymentForm" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" id="pmt_create_batch_user_id" name="pmt_create_batch_user_id" value="" />
-                    <input type="hidden" id="pmt_create_batch_id" name="pmt_create_batch_id" value="" />
+                    <input type="hidden" id="pmt_create_member_id" name="pmt_create_member_id" value="" />
+                    {{-- <input type="hidden" id="pmt_create_batch_id" name="pmt_create_batch_id" value="" /> --}}
                     <input type="hidden" id="pmt_create_subscription_period" name="pmt_create_subscription_period"
                         value="" />
                     <div class="form-group row my-0">

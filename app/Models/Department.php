@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MembershipLevel extends Model
+class Department extends Model
 {
     use HasFactory;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
         'name',
+        'description',
     ];
 
     /**
@@ -25,7 +26,7 @@ class MembershipLevel extends Model
      */
     public function members()
     {
-        return $this->belongsToMany(Memeber::class, 'member_membership_level', 'membership_level_id', 'member_id')
+        return $this->belongsToMany(Memeber::class, 'department_member', 'department_id', 'member_id')
             ->withPivot([
 
                 'published_at',
@@ -35,5 +36,6 @@ class MembershipLevel extends Model
             ])
             ->withTimestamps();
     }
+
 
 }

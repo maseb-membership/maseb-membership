@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemberMembershipLevelPivotTable extends Migration
+class CreateDepartmentMemberPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMemberMembershipLevelPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_membership_level', function (Blueprint $table) {
+        Schema::create('department_member', function (Blueprint $table) {
             $table->id();
             $table->dateTime('published_at')->nullable();
             $table->bigInteger('published_by')->unsigned()->nullable();
@@ -21,8 +21,8 @@ class CreateMemberMembershipLevelPivotTable extends Migration
             $table->bigInteger('approved_by')->unsigned()->nullable();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members');
-            $table->unsignedBigInteger('membership_level_id');
-            $table->foreign('membership_level_id')->references('id')->on('membership_levels');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateMemberMembershipLevelPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_membership_level');
+        Schema::dropIfExists('department_member');
     }
 }

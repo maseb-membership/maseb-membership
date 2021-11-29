@@ -20,6 +20,12 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('vendors/admin/plugins/fontawesome-free/css/all.min.css') }}">
 
+    <!-- Date Range Picker -->
+    <link rel="stylesheet" href="{{ asset('vendors/admin/plugins/daterangepicker/daterangepicker.css') }}">
+
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('vendors/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
     <style>
         /*
      * Globals
@@ -283,7 +289,17 @@
         <!-- Bootstrap 4 -->
         <script src="{{ asset('vendors/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+        <script src="{{ asset('vendors/admin/plugins/moment/moment.min.js') }}"></script>
+
+        <!-- Bootstrap Date Range Picker -->
+        <script src="{{ asset('vendors/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="{{ asset('vendors/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
         @livewireScripts
+
+        @yield('js')
 
 </body>
 

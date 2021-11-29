@@ -29,17 +29,19 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'maseb_id',
         'email',
         'password',
-        'last_name',
-// 'grand_father_name',
-// 'gender',
-// 'member_id',
-// 'mother_name',
-// 'birthdate',
-// 'is_approved',
-
+        'name',
+        'father_name',
+        'grand_father_name',
+        'gender',
+        'mother_name',
+        'birth_date',
+        'nationality',
+        'marital_status',
+        'is_approved',
+        'member_id',
     ];
 
     /**
@@ -72,6 +74,7 @@ class User extends Authenticatable
         'profile_photo_url',
         // 'membership_type',
         // 'membership_level',
+        'full_name',
 
         // 'is_approved',
     ];
@@ -80,6 +83,10 @@ class User extends Authenticatable
         'created' => \App\Events\UserCreatedEvent::class,
         'updated' => \App\Events\UserUpdatedEvent::class,
     ];
+
+    public function getFullNameAttribute($value){
+        return $this->name. ' ' . $this->father_name . ' ' . $this->grand_father_name;
+    }
 
     // public function getIsApprovedAttribute($value){
     //     return User::where('id',$this->id)->value('is_approved');
@@ -136,8 +143,9 @@ class User extends Authenticatable
     public function fullName(): string
     {
         // return $this->name;
-        return $this->name . ' ' . $this->last_name. ' ' . $this->grand_father_name;
+        return $this->name . ' ' . $this->father_name. ' ' . $this->grand_father_name;
     }
+
     // /**
     //  * Add a mutator to ensure hashed passwords
     //  */
@@ -238,4 +246,38 @@ class User extends Authenticatable
 
       return $renderd_data;
     }
+
+    /**
+     * Get the maseb_job associated with the Maseb Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function maseb_job()
+    {
+        return $this->belongsTo(MasebJob::class);
+    }
+
+    /**
+     * Get the address associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+
+    /**
+     * Get the member associated with the Member
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function member()
+    {
+        return $this->hasOne(Member::class, 'member_id', 'id');
+    }
+
+
+
 }

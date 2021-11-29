@@ -63,9 +63,10 @@ class UsersController extends Controller
         $renderd_data = '';
 
         $renderd_data .= '<a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-bell"></i>
-        '.(($notification_count!=0)?'<span class="badge badge-warning navbar-badge">'.$notification_count.'</span>':'').'
-      </a>';
+            <i class="far fa-bell"></i>
+            '.(($notification_count!=0)?'<span class="badge badge-warning navbar-badge">'.$notification_count.'</span>':'').'
+        </a>';
+
       $show_hide = ($dropdown_state==true)?'': '';
       $renderd_data .= '<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right '.$show_hide.'">';
 
@@ -83,7 +84,7 @@ class UsersController extends Controller
                 $notification_item_user_data = User::find($notification_item_user_id);
 
                 $renderd_data .= '<div class="dropdown-divider"></div>
-                <span class="dropdown-item">
+                    <span class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
                             <img style="width:45px;" src="'.$notification_item_user_data->profile_photo_url.'" alt="User Avatar" class="img-size-30 img-circle mr-2">
@@ -106,7 +107,7 @@ class UsersController extends Controller
                 $notification_item_user_data = User::find($notification_item_user_id);
 
                 $renderd_data .= '<div class="dropdown-divider"></div>
-                <span class="dropdown-item">
+                    <span class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
                             <i class="fa fa-envelope p-2 mr-2" style="font-size: 30px;"></i>

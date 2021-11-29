@@ -63,11 +63,11 @@
                 <x-jet-input-error for="name" />
             </div>
 
-            <!-- Last Name -->
+            <!-- Father Name -->
             <div class="form-group">
-                <x-jet-label for="last_name" value="{{ __('Last Name') }}" />
-                <x-jet-input id="last_name" type="text" class="{{ $errors->has('last_name') ? 'is-invalid' : '' }}" wire:model.defer="state.last_name" autocomplete="last_name" />
-                <x-jet-input-error for="last_name" />
+                <x-jet-label for="father_name" value="{{ __('Father Name') }}" />
+                <x-jet-input id="father_name" type="text" class="{{ $errors->has('father_name') ? 'is-invalid' : '' }}" wire:model.defer="state.father_name" autocomplete="father_name" />
+                <x-jet-input-error for="father_name" />
             </div>
 
             <!-- Email -->

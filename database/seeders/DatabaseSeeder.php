@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
             MembershipLevelsSeeder::class,
 
             MembersSeeder::class,
+            MasebJobSeeder::class,
+            AddressSeeder::class,
 
+            SubscriptionPeriodSeeder::class,
         ]);
     }
 }

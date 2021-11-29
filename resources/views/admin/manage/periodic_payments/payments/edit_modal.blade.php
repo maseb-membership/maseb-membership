@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form id="paymentEditForm" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" id="pmt_edit_batch_user_id" name="pmt_edit_batch_user_id" value="" />
+                    <input type="hidden" id="pmt_edit_member_id" name="pmt_edit_member_id" value="" />
                     <input type="hidden" id="pmt_edit_subscription_period_id" name="pmt_edit_subscription_period_id"
                         value="" />
                     <input type="hidden" id="pmt_edit_subscription_period" name="pmt_edit_subscription_period"

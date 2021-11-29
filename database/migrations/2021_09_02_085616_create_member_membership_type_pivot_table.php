@@ -15,15 +15,15 @@ class CreateMemberMembershipTypePivotTable extends Migration
     {
         Schema::create('member_membership_type', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('created_at')->nullable();
-            $table->bigInteger('created_by')->unsigned()->nullable();
+            $table->dateTime('published_at')->nullable();
+            $table->bigInteger('published_by')->unsigned()->nullable();
             $table->dateTime('approved_at')->nullable();
             $table->bigInteger('approved_by')->unsigned()->nullable();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members');
             $table->unsignedBigInteger('membership_type_id');
             $table->foreign('membership_type_id')->references('id')->on('membership_types');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class MemberMembershipType extends Pivot
+class PeriodicPayment extends Pivot
 {
     use HasFactory;
 
@@ -17,21 +16,19 @@ class MemberMembershipType extends Pivot
      */
     public $incrementing = true;
 
+    public $table = "periodic_payments";
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'membership_type_id',
-        'member_id',
-        'published_at',
-        'published_by',
-        'approved_at',
-        'approved_by',
+        'amount',
+        'reciept_no',
+        'payment_date',
+        'method',
     ];
-
-
-
 
 }

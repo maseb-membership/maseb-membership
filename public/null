@@ -1,53 +1,59 @@
-Member::find(5)->membership_types()
-Member::find(5)->membership_types()->last()
-Member::find(5)->membership_types
-Member::find(5)->membership_type
-Member::find(5)->membership_types
-Member::find(5)->membership_types->name
-Member::find(5)->membership_types->name->last()
-Member::find(5)->membership_types()->last()->name->get()
-Member::find(5)->membership_types()->last()->name
-Member::find(5)->membership_types()->last
-Member::find(5)->membership_types
-Member::find(5)->membership_types
-$t = Member::find(5)->membership_types;
-end($t).name
-$t = Member::find(5)->membership_types;
-end($t)['name']
-$t = Member::find(5)->membership_types;
-end($t)
-$t = Member::find(5)->membership_types;
-end(end($t))
-$t = Member::find(5)->membership_types;
-end(end($t))['name']
-$t = Member::find(5)->membership_levels;
-end(end($t))['name']
-Member::find(5)
-Member::find(5)->get()
-Member::where('id', 5)->get()
-Member::where('id', 5)
-Member::where('id', 5)->get()
+DB::table('subscription_payments')
+            ->where('member_id', $this->id)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get();
+DB::table('subscription_payments')
+            ->where('member_id', 6)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get();
+DB::table('periodic_payments')
+            ->where('member_id', 6)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get();
+DB::table('periodic_payments')
+            ->where('member_id', 6)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get()-sum('amount');
+DB::table('periodic_payments')
+            ->where('member_id', 6)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get()->sum('amount');
+Member::find(6)
+Member::find(6);
+Member::find(6);
+Member::find(5
+			);
+Member::all()
+User::where('member_id', 6)->first()
+User::where('member_id', 6)->first()
+User::where('member_id', 6)->first()
+Member::find(1)
+Member::find(1)
+SubscriptionPeriod::find(1)
+\App\Models\SubscriptionPeriod::find(1)
+\App\Models\SubscriptionPeriod::find(1)
+\App\Models\SubscriptionPeriod::find(1)
+Member::find(1)
+Member::find(1)
+Member::find(1)
+Member::find(1)->get()
 Member::all()
 Member::all()
 Member::all()
-Member::all()
-Member::all()
-User::all()
-User::all()
-User::all()
-User::all()
-User::all()
-User::all()
-User::all()
-User::where('member_id',1)
-User::where('member_id',1)->get()
-User::where('member_id',1)->get();
-User::all()
-User::all()
-User::where('member_id', 1)
-User::where('member_id', 1)->get()
 User::all()
 Member::all()
-Member::membership_types()
-Member::membership_types
+DB::table('periodic_payments')
+            ->where('member_id', 1)
+            ->join('subscription_periods', 'periodic_payments.subscription_period_id', '=', 'subscription_periods.id')
+            ->get();
 Member::all()
+PeriodicPayment::all()
+Member::all()
+Member::all()->whereNotNull('approved_by')
+SubscriptionPeriods::all()
+\App\Models\SubscriptionPeriods::all()
+\App\Models\SubscriptionPeriod::all()
+Member::all()
+Member::all()
+Member::all()
+  ;

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\PeriodicPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +95,34 @@ Route::group(['middleware' => 'auth'], function () {
                 'destroy' => 'user.destroy',
                 'show' => 'user.show',
             ]);
+
+            //FINANCE:: Subscription Periods
+            Route::group(['prefix' => 'finance', 'as' => 'finance.'], function () {
+
+                //periodic payments
+                Route::get('/', [PeriodicPaymentController::class, 'index'])->name('index');
+
+                //add subscription period
+                Route::post('/create-period', [PeriodicPaymentController::class, 'addPeriod'])->name('addperiod');
+
+                //edit subscription period
+                Route::post('/edit-period', [PeriodicPaymentController::class, 'editPeriod'])->name('editperiod');
+
+                //add payment detail
+                Route::post('/create-payment', [PeriodicPaymentController::class, 'addPaymentDetail'])->name('addpayment');
+
+                //edit payment detial
+                Route::post('/edit-payment', [PeriodicPaymentController::class, 'editPaymentDetail'])->name('editpayment');
+
+                //delete payment detail
+                Route::delete('/delete-payment/{member_id}/{subscription_period_id}', [PeriodicPaymentController::class, 'deletePaymentDetail'])->name('deletepayment');
+
+            });
+            Route::get('/admin/profiles', function(){
+                return view('admin.manage.members.profiles');
+            })->name('profiles');
+
+
         });
     });
 
