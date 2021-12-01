@@ -93,6 +93,30 @@
                           </div>
 
                         <div class="form-group">
+                            <x-jet-label value="{{ __('Mother Name') }}" />
+
+                            <x-jet-input class="{{ $errors->has('mother_name') ? 'is-invalid' : '' }}" type="text"
+                                name="mother_name" :value="old('mother_name')" required autofocus
+                                autocomplete="mother_name" />
+                            <x-jet-input-error for="mother_name"></x-jet-input-error>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="type">{{ __('Marital Status') }}</label>
+                            <div class="inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-file-code-o"></i></span>
+                                    <select class="form-control" id="marital_status" name="marital_status">
+                                        <option value="0">Not Married</option>
+                                        <option value="1">Married</option>
+                                        <option value="2">Divorced</option>
+                                        <option value="3">Widowed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label" for="type">{{ __('Nationality') }}</label>
                             <div class="inputGroupContainer">
                                 <div class="input-group">

@@ -39,6 +39,8 @@ class CreateNewUser implements CreatesNewUsers
             'father_name' => $input['father_name'],
             'grand_father_name' => $input['grand_father_name'],
             'gender' => $input['gender'],
+            'mother_name' => $input['mother_name'],
+            'marital_status' => $input['marital_status'],
             'birth_date' => $bd,
             'nationality' => $input['nationality'],
             'email' => $input['email'],
