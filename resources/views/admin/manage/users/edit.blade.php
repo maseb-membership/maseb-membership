@@ -67,12 +67,57 @@
                         </div>
                         <div class="px-4 py-2 sm:p-6">
 
-                            <label for="last_name" class="">Last Name</label>
+                            <label for="father_name" class="">Father Name</label>
 
-                            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last Name"
-                                value="{{ old('last_name', $user->last_name) }}" />
+                            <input class="form-control" type="text" id="father_name" name="father_name" placeholder="Last Name"
+                                value="{{ old('father_name', $user->father_name) }}" />
 
-                            @error('last_name')
+                            @error('father_name')
+                                <p class="text-sm text-red">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-2 sm:p-6">
+
+                            <label for="grand_father_name" class="">Grand Father Name</label>
+
+                            <input class="form-control" type="text" id="grand_father_name" name="grand_father_name" placeholder="Last Name"
+                                value="{{ old('grand_father_name', $user->grand_father_name) }}" />
+
+                            @error('grand_father_name')
+                                <p class="text-sm text-red">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-2 sm:p-6">
+
+                            <label for="roles" class="">Gender</label>
+                            <div class="select2-purple">
+                                <select style="width: 100%;" data-placeholder="Select a Role" name="gender" id="gender"
+                                    class="select2 select-gender"
+                                    data-dropdown-css-class="select2-purple">
+
+                                        <option value="0">--select--</option>
+                                        <option value="1" {{ ($user->gender==1) ? ' selected' : '' }}>Male</option>
+                                        <option value="2" {{ ($user->gender==2) ? ' selected' : '' }}>Female</option>
+
+                                </select>
+                            </div>
+
+                            @error('roles')
+                                <p class="text-sm text-red">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+
+                        <div class="px-4 py-2 sm:p-6">
+
+                            <label for="mother_name" class="">Mother Name</label>
+
+                            <input class="form-control" type="text" id="mother_name" name="mother_name" placeholder="Last Name"
+                                value="{{ old('mother_name', $user->mother_name) }}" />
+
+                            @error('mother_name')
                                 <p class="text-sm text-red">{{ $message }}</p>
                             @enderror
                         </div>
@@ -157,7 +202,13 @@
         //Initialize Select2 Elements
         $('.slect-roles-multiple').select2({
             theme: 'bootstrap4'
-        })
+        });
+
+
+        $('.select-gender').select2({
+            theme: 'bootstrap4'
+        });
+
 
     </script>
     @livewireScripts
